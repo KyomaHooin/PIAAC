@@ -1,0 +1,178 @@
+﻿<?xml version='1.0' encoding='windows-1250'?>
+
+<Wix
+	xmlns='http://schemas.microsoft.com/wix/2006/wi'
+    	xmlns:util='http://schemas.microsoft.com/wix/UtilExtension'>
+
+<Product
+ Name='SC&amp;C - PIAAC CMS verze 2.0.9.0'
+ Id='bbc6cc91-b36a-4e58-b645-03b9a8351a8c'
+ UpgradeCode='2aecbbe3-c924-4c10-9d59-cf2af1c16438'
+ Language='1029'
+ Codepage='1250'
+ Version='2.0.9.0'
+ Manufacturer='&#218;stav pro informace ve vzd&#283;l&#225;v&#225;n&#237;'
+ >
+<Package
+ Id='*'
+ Keywords='Installer'
+ Description='SC&amp;C - PIAAC CMS Installer package'
+ Comments='SC&amp;C - PIAAC CMS Installer package'
+ Manufacturer='&#218;stav pro informace ve vzd&#283;l&#225;v&#225;n&#237;'
+ InstallerVersion='100'
+ InstallScope='perMachine'
+ Languages='1029'
+ Compressed='yes'
+ SummaryCodepage='1250' />
+
+<Media Id='1' Cabinet='product.cab' EmbedCab='yes' />
+
+<Property Id='ROOTDRIVE' Value='c:'/>
+		
+<Directory Id='TARGETDIR' Name='SourceDir'>
+	<Directory Id='ROOTPATH' Name='piaac'>
+	
+	<Component Id='piaacacl' Guid='fff8a666-04ec-40a7-9c1e-a625bccbe4d7'>
+			<CreateFolder>
+			<Permission User="Everyone" GenericAll="yes"  />
+		</CreateFolder>
+	</Component>
+	
+		<Component Id='theprogram' Guid='fffcaa79-d387-4f36-a1e5-e80ed0cfa065'>
+			<File Id='program' Name='CMS.exe' DiskId='1' Source='CMS.exe'/>
+		</Component>
+		<Component Id='exportresult' Guid='fff938ff-ddb8-4983-b882-21f6443d01d5'>
+			<File Id='ExportResultProgram' Name='ExportResult.exe' DiskId='1' Source='ExportResult.exe' />
+		</Component>
+		<Component Id='resumecapi' Guid='fffac805-155e-4dc4-be24-8b12e201ad39'>
+			<File Id='ResumeCapiProgram' Name='ResumeCAPI.exe' DiskId='1' Source='ResumeCAPI.exe' />
+		</Component>
+		<Component Id='startcapi' Guid='fffdc0db-5f45-4e42-9a32-048e3398b354'>
+			<File Id='StartCapiProgram' Name='StartCAPI.exe' DiskId='1' Source='StartCAPI.exe' />
+		</Component>
+		<Component Id='stopvm' Guid='fff966fc-ef6d-49c3-9504-3a1cf28beb3e'>
+			<File Id='StopVmProgram' Name='StopVM.exe' DiskId='1' Source='StopVM.exe' />
+		</Component>
+		<Component Id='patchvm' Guid='fff4c261-ff6c-4677-b0c4-26bf282d207c'>
+			<File Id='PatchVmProgram' Name='PatchVM.exe' DiskId='1' Source='PatchVM.exe' />
+		</Component>
+		<Component Id='piaacscriptconfig' Guid='fff0ca7e-4074-4405-90f3-4cac0ff260cc'>
+			<File Id='PiaacScriptConfig' Name='PIAACscriptConfig.ini' DiskId='1' Source='PIAACscriptConfig.ini' />
+		</Component>
+		<Component Id='helpfile' Guid='fff731d7-c60e-4a40-b9c6-ae061be19e9e'>
+			<File Id='HelpFile' Name='cms.chm' DiskId='1' Source='cms.chm' />
+		</Component>
+		
+		<Directory Id='output' Name='output'>
+			<Component Id='outputfolder' Guid='fffcf452-97e3-46b3-9930-a6093f94d9f0'>
+				<CreateFolder />
+			</Component>
+		</Directory>
+
+		<Directory Id='input' Name='input'>
+			<Component Id='inputfolder' Guid='fff6d1b1-7065-4eb4-935e-85c8a1f56b11'>
+				<CreateFolder />
+			</Component>
+		</Directory>
+
+		<Directory Id='patch' Name='patch'>
+			<Component Id='patchfolder' Guid='fff50dd6-5376-4647-a268-756a32ecdfdd'>
+				<CreateFolder />
+			</Component>
+		</Directory>
+
+		<Directory Id='record' Name='record'>
+			<Component Id='harddisk' Guid='fffb73b1-42d6-4012-a289-b2cb31664db5'>
+				<File Id='HarddiskProgram' Name='Harddisk.exe' DiskId='1' Source='Harddisk.exe' />
+			</Component>
+			<Component Id='recording' Guid='fff3aeed-e9ed-42d7-a12c-2cb172df4ba0'>
+				<File Id='RecordingProgram' Name='recording.hdp' DiskId='1' Source='recording.hdp' />
+			</Component>
+			<Component Id='normalization' Guid='fffe0418-6b26-4ff3-90a3-0e57fa30f867'>
+				<File Id='NormalizationProgram' Name='normalization.hfs' DiskId='1' Source='normalization.hfs' />
+			</Component>
+			<Component Id='lame' Guid='fff9df1c-a47d-4111-a72e-81f37cad5b21'>
+				<File Id='LameLibrary' Name='lame_enc.dll' DiskId='1' Source='lame_enc.dll' />
+			</Component>
+	
+		</Directory>
+
+		<Directory Id='vm' Name='vm'>
+			<Directory Id='current' Name='current'>
+				<Component Id='currentfolder' Guid='fff7a564-f954-4b79-bf10-6efb300ad5f3'>
+					<CreateFolder />
+				</Component>
+			</Directory>
+			
+			<Directory Id='restore' Name='restore'>
+				<Component Id='restorefolder' Guid='fff6fbe7-986f-4650-9e56-a0d19fb60d07'>
+					<CreateFolder />
+				</Component>
+			</Directory>
+			
+			<Directory Id='backup' Name='backup'>
+				<Component Id='backupfolder' Guid='fff3ae90-f538-40d7-967d-12941bc29907'>
+					<CreateFolder />
+				</Component>
+			</Directory>
+
+		</Directory>
+
+	</Directory>
+
+	<Directory Id='DesktopFolder' Name='Desktop'>
+		<Component Id='shortcut' Guid='fffc3fb5-9691-4cbc-957d-7bf2212c78e4'>
+			<RegistryKey Root='HKCU' Key='Software\CMS\Install' Action='createAndRemoveOnUninstall'>
+		   		<RegistryValue Name='CMSShortcut' Value='1' Type='integer' KeyPath='yes'/>
+			</RegistryKey>
+			<Shortcut
+				Id='shortcut'
+				Directory='DesktopFolder'
+				Name='CMS'
+				WorkingDirectory='INSTALLDIR'
+				Icon='CMS.ico'
+				Target='[!program]'>
+					<Icon Id='CMS.ico' SourceFile='CMS.ico'/>
+			</Shortcut>
+		</Component>
+	</Directory>
+</Directory>
+
+<Feature Id='Complete' Level='1'>
+
+	<ComponentRef Id='piaacacl' />
+
+	<ComponentRef Id='theprogram' />
+	<ComponentRef Id='exportresult' />
+	<ComponentRef Id='resumecapi' />
+	<ComponentRef Id='startcapi' />
+	<ComponentRef Id='stopvm' />
+	<ComponentRef Id='patchvm' />
+	<ComponentRef Id='piaacscriptconfig' />
+	<ComponentRef Id='helpfile' />
+
+	<ComponentRef Id='harddisk' />
+	<ComponentRef Id='recording' />
+	<ComponentRef Id='normalization' />
+	<ComponentRef Id='lame' />
+
+	<ComponentRef Id='outputfolder' />
+	<ComponentRef Id='inputfolder' />
+	<ComponentRef Id='patchfolder' />
+
+	<ComponentRef Id='backupfolder' />
+	<ComponentRef Id='restorefolder' />
+	<ComponentRef Id='currentfolder' />
+
+	<ComponentRef Id='shortcut' />
+
+</Feature>
+
+<UIRef Id="WixUI_Minimal" />
+<UIRef Id="WixUI_ErrorProgressText" />
+
+<WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+<WixVariable Id="WixUIDialogBmp" Value="piaac.bmp" />
+
+</Product>
+</Wix>
