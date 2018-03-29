@@ -16,6 +16,5 @@ cms_help_full.chm - HTML Help Workshop help file.
 
 CONTACT
 
-Author: richard.bruna@protonmail.com<br>
 Source: https://github.com/KyomaHooin/PIAAC
 
