@@ -14,7 +14,7 @@ cms_help_full.chm - HTML Help Workshop help file.
        banner.bmp - WiX installer banner.
 </pre>
 
-CONTACT
+SOURCE
 
-Source: https://github.com/KyomaHooin/PIAAC
+https://github.com/KyomaHooin/PIAAC
 
